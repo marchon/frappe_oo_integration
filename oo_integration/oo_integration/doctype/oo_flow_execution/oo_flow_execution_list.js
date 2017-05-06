@@ -7,7 +7,7 @@ frappe.listview_settings['OO Flow Execution'] = {
     add_fields: ["status"],
     get_indicator: function (doc) {
         if(["RUNNING"].includes(doc.status)){
-            return [doc.status, "grey", "status,=," + doc.status];
+            return [doc.status, "blue", "status,=," + doc.status];
         }
         else if([   "SYSTEM_FAILURE",
                     "COMPLETED_ERROR",
@@ -30,8 +30,9 @@ frappe.listview_settings['OO Flow Execution'] = {
                     "PAUSED_HAND_OFF",
                     "PAUSED_INTERRUPT",
                     "PAUSED_NO_WORKERS_IN_GROUP",
-                    "PAUSED_BRANCH_PAUSED"].includes(doc.status)){
-            return [doc.status, "blue", "status,=," + doc.status];
+                    "PAUSED_BRANCH_PAUSED",
+                    "RUNNING"].includes(doc.status)){
+            return [doc.status, "orange", "status,=," + doc.status];
         }
     }
 };
