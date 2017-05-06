@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include oo_integration *.css
+recursive-include oo_integration *.csv
+recursive-include oo_integration *.html
+recursive-include oo_integration *.ico
+recursive-include oo_integration *.js
+recursive-include oo_integration *.json
+recursive-include oo_integration *.md
+recursive-include oo_integration *.png
+recursive-include oo_integration *.py
+recursive-include oo_integration *.svg
+recursive-include oo_integration *.txt
+recursive-exclude oo_integration *.pyc
