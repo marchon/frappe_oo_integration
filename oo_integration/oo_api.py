@@ -11,7 +11,7 @@ def run_flow_frappe(uuid,inputs=None,run_name=None):
     oo_config = frappe.get_doc("OO Setup")
     url = oo_config.url
     username = oo_config.username
-    password = oo_config.password
+    password = oo_config.get_password()
 
     executionId =  run_flow(url, uuid, username, password, inputs, run_name)
 
@@ -70,7 +70,7 @@ def get_run_summary_list(executions_id):
     oo_config = frappe.get_doc("OO Setup")
     oo_url = oo_config.url
     username = oo_config.username
-    password = oo_config.password
+    password = oo_config.get_password()
 
     url = oo_url+'/rest/v1/executions/'+executions_id+'/summary'
     headers = {
@@ -90,7 +90,7 @@ def get_flow_inputs(uuid):
     oo_config = frappe.get_doc("OO Setup")
     oo_url = oo_config.url
     username = oo_config.username
-    password = oo_config.password
+    password = oo_config.get_password()
 
     url = oo_url + '/rest/v1/flows/' + uuid + '/inputs'
     headers = {
@@ -110,7 +110,7 @@ def get_flow_execution_log(execution_id):
     oo_config = frappe.get_doc("OO Setup")
     oo_url = oo_config.url
     username = oo_config.username
-    password = oo_config.password
+    password = oo_config.get_password()
 
     url = oo_url + '/rest/v1/executions/' + execution_id + '/execution-log'
     headers = {

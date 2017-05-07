@@ -97,6 +97,7 @@ frappe.pages['flow-launcher'].on_page_load = function(wrapper) {
 		frappe.call({
 			method: "oo_integration.oo_api.run_flow_frappe",
 			args: args,
+			freeze: true,
 			callback: function(r) {
 				if(r) {
 					frappe.set_route("Form", "OO Flow Execution", r.message);
