@@ -5,6 +5,10 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
+from frappe.utils.scheduler import enable_scheduler
+from frappe import _
 
 class OOSetup(Document):
-	pass
+	def enable_scheduler(self):
+		enable_scheduler()
+		frappe.msgprint(_("Scheduler Enabled"))
