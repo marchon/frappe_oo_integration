@@ -34,14 +34,20 @@ frappe.pages['flow-launcher'].on_page_load = function(wrapper) {
 							$(".inputs").html("");
 
 							$.each(flow_doc.inputs, function( index, item ) {
-								var input = frappe.ui.form.make_control({
-									parent: $(".inputs"),
-									df: {
+								var df = {
 										fieldtype: item.input_type,
 										fieldname: item.input_name,
 										label: item.label,
-										reqd: item.mandatory
-									}
+										reqd: item.mandatory,
+									};
+
+								if(item.input_type==="Link" || item.input_type==="Select"){
+									df.options = item.options;
+								}
+
+								var input = frappe.ui.form.make_control({
+									parent: $(".inputs"),
+									df: df
 								});
 								input.refresh();
 								frappe.pages['flow-launcher'].inputs.push(input);
